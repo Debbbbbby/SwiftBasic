@@ -18,17 +18,28 @@ someBool = false
 var someInt: Int = -100
 //someInt = 100.1 // 오류
 
-// UInt : 양의 정수 타입
+// UInt : 64비트 양의 정수형
 var someUInt: UInt = 100
-
+//someUInt = -100 // 오류
+//someUInt = someInt // 오류
 
 // Float
 var someFloat: Float = 3.14
+someFloat = 3
 
 // Double
 var someDouble: Double = 3.14
+someDouble = 3
+//someDouble = someFloat // 오류
 
 // Character
 var someCharacter: Character = "🍑"
+someCharacter = "가"
+someCharacter = "A"
+//someCharacter: Character = "하하하" // 오류
+print(someCharacter)
 
 // String
+var someString: String = "하하하 😁"
+someString = someString + " 웃으면 복이와요"
+print(someString)
