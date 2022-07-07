@@ -9,12 +9,12 @@
         return 반환값
 }*/
 
-func greeting1(friend: String, me: String = "debby") {
+func greeting(friend: String, me: String = "debby") {
     print("Hello \(friend)! I'm \(me)")
 }
 
-greeting1(friend: "byukkyak")
-greeting1(friend: "byukkyak", me: "yagom")
+greeting(friend: "byukkyak")
+greeting(friend: "byukkyak", me: "yagom")
 
 /* 2. 전달인자 레이블(Argument Label) */
 /* func 함수이름(전달인자 레이블 매개변수1이름: 매개변수1타입, 매개변수2이름:매개변수2타입 .. ) -> 반환타입 {
@@ -22,12 +22,12 @@ greeting1(friend: "byukkyak", me: "yagom")
         return 반환값
 }*/
 
-func greeting2(to friend: String, from me: String) {
+func greeting(to friend: String, from me: String) {
     print("Hello \(friend)! I'm \(me)")
 }
 
 // 함수 호출시 전달인자 레이블 사용
-greeting2(to: "byukkyak", from: "debby")
+greeting(to: "byukkyak", from: "debby")
 
 /* 3. 가변 매개변수 */
 /* func 함수이름(매개변수1이름: 매개변수1타입, 전달인자 레이블 매개변수2이름:매개변수2타입 .. ) -> 반환타입 {
@@ -43,3 +43,20 @@ print(sayHelloToFriends(me: "debby", friends: "chu", "Eugenie", "byukbyak"))
 print(sayHelloToFriends(me: "debby"))
 
 /* 4. 데이터 타입으로서의 함수 */
+//(매개변수1타입, 매개변수2타입 ...) -> 반환타입
+
+var someFunc: (String, String) -> Void = greeting(to:from:)
+someFunc("bibi", "debby")
+
+someFunc = greeting(friend:me:)
+someFunc("bebe", "debby")
+
+// 타입이 다른 함수는 할당할 수 없다, 컴파일 오류 발생
+// someFunc = sayHelloToFriends(me:friend:)
+
+func runAnother(function: (String, String) -> Void) {
+    function("jenny", "lisa")
+}
+
+runAnother(function: greeting(friend:me:))
+runAnother(function: someFunc)
